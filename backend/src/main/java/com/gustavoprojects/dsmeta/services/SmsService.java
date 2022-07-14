@@ -27,21 +27,35 @@ public class SmsService {
     @Autowired
     private SaleRepository saleRepository;
 
-    public void sendSms(Long id) {
+    public void sendSmsWithId(Long id) {
 
         Sale sale = saleRepository.findById(id).get();
 
         String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 
-        String msg = "Vendedor " + sale.getSellerName() + "foi destaque em " + date + "com um total de R$"
-                + String.format("%2f", sale.getAmount());
+        String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date + " com um total de R$ "
+                + String.format("%.2f", sale.getAmount());
 
         Twilio.init(twilioSid, twilioKey);
 
         PhoneNumber to = new PhoneNumber(twilioPhoneTo);
         PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-        Message message = Message.creator(to, from, "Te amo demais <3").create();
+        Message message = Message.creator(to, from, msg).create();
+
+        System.out.println(message.getSid());
+    }
+
+    public void sendSms() {
+
+        String msg2 = "Te amo demais!!! <3";
+
+        Twilio.init(twilioSid, twilioKey);
+
+        PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+        PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
+
+        Message message = Message.creator(to, from, msg2).create();
 
         System.out.println(message.getSid());
     }
