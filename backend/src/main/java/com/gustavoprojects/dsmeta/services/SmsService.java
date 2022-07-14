@@ -45,18 +45,4 @@ public class SmsService {
 
         System.out.println(message.getSid());
     }
-
-    public void sendSms() {
-
-        String msg2 = "Te amo demais!!! <3";
-
-        Twilio.init(twilioSid, twilioKey);
-
-        PhoneNumber to = new PhoneNumber(twilioPhoneTo);
-        PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
-
-        Message message = Message.creator(to, from, msg2).create();
-
-        System.out.println(message.getSid());
-    }
 }

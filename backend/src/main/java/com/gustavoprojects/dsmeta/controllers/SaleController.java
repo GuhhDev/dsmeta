@@ -25,16 +25,11 @@ public class SaleController {
             @RequestParam(value="minDate", defaultValue = "") String minDate,
             @RequestParam(value="maxDate", defaultValue = "") String maxDate,
             Pageable pageable) {
-        return saleService.findSales(minDate,maxDate,pageable);
+        return saleService.findSales(minDate, maxDate, pageable);
     }
 
     @GetMapping("/{id}/notification")
     public void sendNotifySmsWithId(@PathVariable Long id){
         smsService.sendSmsWithId(id);
-    }
-
-    @GetMapping("/notification")
-    public void sendNotifySms(){
-        smsService.sendSms();
     }
 }
