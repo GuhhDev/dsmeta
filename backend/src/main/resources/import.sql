@@ -116,3 +116,4 @@ INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Kal-El',55,
 INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Anakin',84,34,5787.0,'2021-07-01');
 INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Padme',79,68,11976.0,'2021-06-27');
 INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Fabio Watanabe',118,80,5218.0,'2021-07-15');
+INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Pedro Felipe',2000,38,3219.0,'2021-07-16');
