@@ -17,7 +17,7 @@ import java.util.List;
 public class SaleController {
 
     @Autowired
-    private SaleService saleService;
+    private SaleService service;
 
     @Autowired
     private SmsService smsService;
@@ -27,11 +27,11 @@ public class SaleController {
             @RequestParam(value="minDate", defaultValue = "") String minDate,
             @RequestParam(value="maxDate", defaultValue = "") String maxDate,
             Pageable pageable) {
-        return saleService.findSales(minDate, maxDate, pageable);
+        return service.findSales(minDate, maxDate, pageable);
     }
 
     @GetMapping("/{id}/notification")
-    public void sendNotifySmsWithId(@PathVariable Long id){
-        smsService.sendSmsWithId(id);
+    public void notifySms(@PathVariable Long id) {
+        smsService.sendSms(id);
     }
 }
